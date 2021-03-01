@@ -1,0 +1,11 @@
+.coolTitle{
+    color: blue;
+    background-color: yellow;
+}
+
+.done{
+    text-decoration: line-through;
+}
+button{
+    margin: 5px;
+}
