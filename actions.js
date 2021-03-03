@@ -14,9 +14,8 @@ for(var i=0;i<delBtn.length;i++){
 }
 
 function updateContent(e){
-    console.log(e.target.parentNode.firstChild);
+    console.log(e.target.parentNode.innerHTML);
 }
-
 //strike through function
 function strikeThrough(e) {
     if (e.target.tagName === "LI") {
