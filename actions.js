@@ -5,6 +5,14 @@ var delBtn = document.getElementsByClassName("del");
 var updateBtn = document.getElementsByClassName("update");
 var clearBtn = document.getElementById("clearBtn");
 
+function stripHtml(html)
+{
+   let tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent || tmp.innerText || "";
+}
+
+
 for(var i=0;i<updateBtn.length;i++){
     updateBtn[i].onclick=updateContent;
 }
@@ -14,15 +22,15 @@ for(var i=0;i<delBtn.length;i++){
 }
 
 function updateContent(e){
-    var val = e.target.parentNode.firstChild;
-    String(val);
-    document.getElementById("txtInput").value=val;
+    const str = stripHtml(e.target.parentNode.innerHTML);
+    const str2 = str.replace("Update","").replace("Delete","");
+    input.value=str2.trim();
+    removeLi(e);
 } 
 //strike through function
 function strikeThrough(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("done");
-        input.value=e.target.innerHTML;
     }
 }
 
@@ -36,19 +44,19 @@ function createListElement(){
     var li = document.createElement("li");
 
     var btn = document.createElement("button");
-    var upBtn = document.createElement("button");
+    var updatebtn = document.createElement("button");
 
-    upBtn.appendChild(document.createTextNode("Update"));
     btn.appendChild(document.createTextNode("Delete"));
+    updatebtn.appendChild(document.createTextNode("Update"));
 
     li.appendChild(document.createTextNode(input.value));
     li.appendChild(btn);
-    li.appendChild(upBtn);
+    li.appendChild(updatebtn);
 
     list.appendChild(li);
     input.value="";
     btn.onclick=removeLi;
-    upBtn.onclick=updateContent;
+    updatebtn.onclick=updateContent;
 }
 
 function addListAftercClick(){
