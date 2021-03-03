@@ -14,12 +14,15 @@ for(var i=0;i<delBtn.length;i++){
 }
 
 function updateContent(e){
-    console.log(e.target.parentNode.innerHTML);
-}
+    var val = e.target.parentNode.firstChild;
+    String(val);
+    document.getElementById("txtInput").value=val;
+} 
 //strike through function
 function strikeThrough(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("done");
+        input.value=e.target.innerHTML;
     }
 }
 
